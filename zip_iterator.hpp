@@ -10,7 +10,6 @@
  */
 
 #if __cplusplus < 201402L && _MSVC_LANG < 201402L
-template<typename... Iterators>
 #error zip_iterator needs C++14 or later.
 #endif
 
@@ -53,7 +52,7 @@ namespace tuple_utils {
         reference operator*() const;
     };
 
-#if __cplusplus >= 201703L
+#if __cplusplus >= 201703L || _MSVC_LANG >= 201703L
     template<typename... Iterators>
     zip_iterator(std::tuple<Iterators...>)->zip_iterator<std::tuple<Iterators...>>;
 #endif
